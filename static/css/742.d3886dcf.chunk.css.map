@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/742.d3886dcf.chunk.css","mappings":"AAAA,SAEI,wBAA4B,CAD5B,WAGJ","sources":["Components/Friends/Friends.css"],"sourcesContent":[".content {\r\n    grid-area: c;\r\n    background-color: whitesmoke;\r\n\r\n}\r\n\r\n"],"names":[],"sourceRoot":""}
