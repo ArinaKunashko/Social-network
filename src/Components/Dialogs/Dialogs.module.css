@@ -1,0 +1,46 @@
+.content {
+    grid-area: c;
+    background-color: whitesmoke;
+
+}
+
+.dialogs {
+    
+}
+
+.dialogsItems {
+float: left;
+}
+
+.messages {
+color: black;
+padding: 10px;
+float: right;
+
+}
+
+.messages .message {
+color: black;
+float: right;
+
+}
+
+.dialogs.messages {
+    color: black;
+    float: right;
+}
+
+.errorMessage {
+    color: red ;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.fieldNewMessageBody {
+    float: left; 
+    resize: none; 
+    word-wrap: break-word;
+    font-size: large; 
+    white-space: pre-wrap;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 110%;
+}
