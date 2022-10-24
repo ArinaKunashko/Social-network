@@ -1,40 +1,5 @@
-.content {
-    column-gap: normal;
-    background-color: whitesmoke;
 
-}
-
-.messages {
-color: black;
-padding: 10px;
-
-}
-
-.messages .message {
-color: black;
-
-}
-
-.dialogs.messages {
-    color: black;
-}
-
-.errorMessage {
-    color: red ;
-    font-family:'Times New Roman', Times, serif;
-}
-
-.fieldNewMessageBody {
-    float: left; 
-    resize: none; 
-    word-wrap: break-word;
-    font-size: large; 
-    white-space: pre-wrap;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 110%;
-}
-
-button {
+.button {
     font-family: 'Times New Roman', Times, serif;
     font-size: 100%;
     width: 60px;
@@ -53,7 +18,6 @@ button {
      7px 7px 20px 0px rgba(0, 0, 0, 0.1),
      4px 4px 5px 0px rgba(0,0,0,.1);
     outline: none;
-    margin-left: 15px;
    
 }
 
@@ -72,3 +36,4 @@ input {
     margin-bottom: 5px; 
 
 }
+

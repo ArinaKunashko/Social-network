@@ -25,7 +25,6 @@ const validateSchemaNewPostText = Yup.object().shape({
 
 
 const MyPost = (props) => {
-    // let state = props.store.getState().profilePage
     let postsElements =
         props.posts.map(posts => <Post message={posts.message} likesCount={posts.likesCount} />)
 
@@ -34,9 +33,7 @@ const MyPost = (props) => {
 
 
     let onAddPost = (values, {resetForm}) => {
-        // debugger
         props.addPost(values.newPostText)
-        // alert(values.onAddPost)
         resetForm({ newPostText: ''})
     }
 
@@ -51,25 +48,6 @@ const MyPost = (props) => {
                 }}
 
                 onSubmit={onAddPost}
-
-                // onSubmit={(onAddPost, {resetForm} ) => {
-                //     console.log(onAddPost)   
-                //     resetForm({ newPostText: ''})
-                    
-                //    }}
-
-                // onSubmit={(onAddPost, actions) => {
-                //     props.onSubmit(onAddPost).then(() => {
-                //         // actions.setSubmitting(false);
-                //         actions.resetForm({
-                //             onAddPost: {
-                //                 newPostText: ""
-                //             },
-                //         });
-                //     });
-                // }}
-
-
                 validate={validateNewPostText}
                 validationSchema={validateSchemaNewPostText}
             >
@@ -106,10 +84,8 @@ const MyPost = (props) => {
 
             <div className={s.posts}>
                 {postsElements}
-                {/* <Post /> */}
 
                 <div className={s.item}>
-                    {/* Post 2 */}
                 </div>
             </div>
         </div>

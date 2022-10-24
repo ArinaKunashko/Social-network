@@ -1,8 +1,8 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
 import HeaderContainer from './Components/Header/HeaderContainer';
 import Navbar from './Components/Navbar/Navbar';
-import { BrowserRouter, Route, Routes, HashRouter } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import state from './Redux/store';
 import { Component } from 'react';
 import { connect } from "react-redux";
@@ -22,9 +22,19 @@ const News = React.lazy(() => import('./Components/News/News'));
 
 
 class App extends Component {
+  catchAllUnhandledError = (reason, promise) => {
+    alert('Some error occured')
+   // console.error(promiseRejectionEvent)
+  }
   componentDidMount() {
     this.props.initializeApp()
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledError) 
+      // handle error here, for example log   
   }
+  componentWillUnmount() {
+    window.removeEventListener("unhandledrejection", this.catchAllUnhandledError)
+  }
+  
 
   render() {
     if (!this.props.initialized) {
@@ -41,6 +51,7 @@ class App extends Component {
               <Routes>
                 <Route exact path='/dialogs' element={<DialogsContainer />} />
                 <Route path='/profile' element={<ProfileContainer />} />
+                {/* <Route path='/' element={<Navigate to= '/profile' />} /> */}
                 <Route path='/profile/:userId' element={<ProfileContainer />} />
                 <Route path='/news' element={<News />} />
                 <Route path='/music' element={<Music />} />
@@ -48,6 +59,7 @@ class App extends Component {
                 <Route path='/friends' element={<Friends state={state} />} />
                 <Route path='/users' element={<UsersContainer />} />
                 <Route path='/login' element={<LoginPage />} />
+                {/* <Route path='*' element={<div> 404 NOT FOUND </div>} /> */}
               </Routes>
             </Suspense>
           </div>

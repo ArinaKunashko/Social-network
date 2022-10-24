@@ -38,17 +38,6 @@ let Paginator = ({ totalItemsCount, pageSize, currentPage, onPageChanged, portio
             <button onClick={() => { setPortionNumber(portionNumber + 1) }}> NEXT </button> }
 
 
-
-
-        {/* <div>
-            {pages.slice(0, 30).map(p => {
-                return <span className={ currentPage === p && s.selectedPage }
-                    onClick={(e) => { onPageChanged(p) }}>{p} </span>
-            })}
-        </div> */}
-
-
-
     </div >
 }
 

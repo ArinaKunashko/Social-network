@@ -31,14 +31,6 @@ test('after creation <input> should not be displayed', () => {
 
 })
 
-// test('after creation <span> should contains correct status', () => {
-//     const component = create(<ProfileStatus status="My status" />)
-//     const root = component.root;
-//     let span = root.findByType('span')
-//     expect(span.children[0]).toBe("My status")
-
-// })
-
 
 test('input should be displayed in editMode instead of span', () => {
     const testRenderer = TestRenderer.create(<ProfileStatus status='My status' />)

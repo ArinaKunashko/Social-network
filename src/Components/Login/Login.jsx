@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import s from "./Login.module.css"
 import { connect } from "react-redux";
-import { login } from "../../Redux/auth-reducer";
+import { login, getCaptchaUrl } from "../../Redux/auth-reducer";
 import { Navigate } from 'react-router-dom';
 
 
@@ -34,7 +34,7 @@ const Login = (props) => {
     if (props.isAuth) {
         return <Navigate replace to='/profile' />
     }
-
+   
     return (
         <div>
             <h2> Login  </h2>
@@ -43,20 +43,25 @@ const Login = (props) => {
                 initialValues={{
                     email: "",
                     password: "",
-                    rememberMe: false
+                    rememberMe: false,
+                    captcha: ''
+
                 }}
                 validate={validateLoginForm}
                 validationSchema={validationSchemaLoginForm}
 
                 onSubmit={(values, { setSubmitting, setStatus }) => {
-                    props.login(values.email, values.password, values.rememberMe, setStatus)
+                    props.login(values.email, values.password, values.rememberMe, values.captcha, setStatus)
                     setSubmitting(false)
+
                 }
+
 
                 }
             >
                 {({ touched }) => (
-                    <Form>
+                    <Form captchaUrl={props.captchaUrl}>
+
 
                         <div > Email
                             <Field
@@ -88,6 +93,24 @@ const Login = (props) => {
                             <label htmlFor={'rememberMe'} > Remember me </label>
                         </span>
 
+
+
+
+                        {props.captchaUrl && <div> <img src={props.captchaUrl}/>
+                        {props.captchaUrl &&
+                        <div> 
+                            <Field
+                                name={'captcha'}
+                                type={'string'}
+                                placeholder={'Please write the text on the picture'} />
+                        </div>}
+                        {touched.captcha}
+                        
+        </div>
+          
+        }
+    
+
                         <div>
                             <button
                                 type={'submit'} > Login </button>
@@ -102,6 +125,7 @@ const Login = (props) => {
 }
 
 const mapStateToProps = (state) => ({
+    captchaUrl: state.auth.captchaUrl,
     isAuth: state.auth.isAuth
 })
 

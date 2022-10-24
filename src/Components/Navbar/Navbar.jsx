@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-// import classes from './Navbar.module.css'
 import s from './Navbar.module.css'
+
 
 let classesNew = `${s.item} ${s.active}`
 const Navbar = () => {

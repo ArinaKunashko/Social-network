@@ -33,8 +33,6 @@ const Dialogs = (props) => {
 
     let messagesElement =
         state.messages.map(m => <Message message={m.message} key={m.id} id={m.id} />)
-
-    // let newMessageElement = React.createRef();
         
 
     let addNewMassage = (values, {resetForm}) => {

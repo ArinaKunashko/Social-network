@@ -1,5 +1,4 @@
 import React from "react";
-import Sidebar from "../../Friends/SideBar";
 import s from './../Dialogs.module.css'
 
 

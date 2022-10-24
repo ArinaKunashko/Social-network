@@ -1,0 +1,14 @@
+.statusSpan {
+    display: block;
+    width: 400px;
+    padding: 6px 12px; 
+    font-size: 90%;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.42857143;
+    color: black;
+    /* background-color: rgb(243, 237, 237); */
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 5px; 
+}
