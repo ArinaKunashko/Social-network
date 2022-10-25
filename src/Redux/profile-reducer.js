@@ -9,23 +9,12 @@ const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS'
 const SAVE_PROFILE_SUCCESS = 'SAVE_PROFILE_SUCCESS'
 
 
-// function Counter() {
-//     const [likesCount, setCount] = useState(0);
-
-//     return (
-//       <div>
-//         <p> {likesCount} </p>
-//         <button className={s.buttonLikes} onClick={() => setCount(likesCount + 1)}>
-//           Likes
-//         </button>
-//       </div>
-//     )}
 
 let initialState = {
     posts: [
-        { id: 1, message: 'If you are the smartest person in the room, then you are not in the room where you should be.', likesCount: 12 },
-        { id: 2, message: 'All we have to decide is what to do with the time that is given to us', likesCount: 11 },
-        { id: 3, message: 'Life is like a box of chocolates, you never know what you’re gonna get', likesCount: 15 },
+        { id: 1, message: 'If you are the smartest person in the room, then you are not in the room where you should be.' },
+        { id: 2, message: 'All we have to decide is what to do with the time that is given to us'  },
+        { id: 3, message: 'Life is like a box of chocolates, you never know what you’re gonna get' },
 
     ],
 

@@ -23,7 +23,6 @@ const ProfileInfo = ({ profile, updateStatus, isOwner, savePhoto, saveProfile, s
         }
     }
 
-
     const onSubmit = (values) => {
         saveProfile(values)
         setEditMode(false)

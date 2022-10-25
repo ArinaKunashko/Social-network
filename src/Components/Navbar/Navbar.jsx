@@ -16,17 +16,17 @@ const Navbar = () => {
               isActive ? s.activeLink : undefined
             } > Messages </NavLink>
         </div>
-        <div className={s.item}>
+        {/* <div className={s.item}>
             <NavLink to="/news" className={({ isActive }) =>
               isActive ? s.activeLink : undefined
             } > News </NavLink>
-        </div>
+        </div> */}
         <div className={s.item}>
             <NavLink to="/users" className={({ isActive }) =>
               isActive ? s.activeLink : undefined
             } > Users </NavLink>
         </div>
-        <div className={s.item}>
+        {/* <div className={s.item}>
             <NavLink to="/music" className={({ isActive }) =>
               isActive ? s.activeLink : undefined
             } > Music </NavLink>
@@ -41,7 +41,7 @@ const Navbar = () => {
             <NavLink to="/friends" className={({ isActive }) =>
               isActive ? s.activeLink : undefined
             } > Friends </NavLink>
-        </div>
+        </div> */}
 
     </nav>
 }
