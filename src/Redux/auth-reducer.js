@@ -1,8 +1,7 @@
-import { authAPI, securityAPI } from "../api/Api"
+import { authAPI, securityAPI } from '../api/Api'
 
 const SET_USER_DATA = 'SET_USER_DATA'
 const GET_CAPTCHA_URL_SUCCESS = 'https://social-network/auth/GET_CAPTCHA_URL_SUCCESS'
-
 
 let initialState = {
     userId: null,
@@ -19,22 +18,19 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.payload,
-
             }
         default:
             return state
     }
 }
 
-
 export const setAuthUserData = (userId, email, login, isAuth, captchaUrl) => ({
     type: SET_USER_DATA, payload:
         { userId, email, login, isAuth, captchaUrl }
 })
 
-
 export const getCaptchaUrlSuccess = (captchaUrl) => ({
-    type: GET_CAPTCHA_URL_SUCCESS, payload: {captchaUrl }
+    type: GET_CAPTCHA_URL_SUCCESS, payload: { captchaUrl }
 })
 
 export const getAuthUserData = () => async (dispatch) => {
@@ -43,32 +39,25 @@ export const getAuthUserData = () => async (dispatch) => {
         let { id, email, login } = response.data.data
         dispatch(setAuthUserData(id, email, login, true))
     }
-
 }
-
 
 export const login = (email, password, rememberMe, captcha, setStatus) => async (dispatch) => {
     let response = await authAPI.login(email, password, rememberMe, captcha)
-
     if (response.data.resultCode === 0) {
-
         dispatch(getAuthUserData())
     } else {
-        if ( response.data.resultCode ===10) {
+        if (response.data.resultCode === 10) {
             dispatch(getCaptchaUrl())
         }
         setStatus(response.data.message)
     }
 }
 
-
 export const getCaptchaUrl = () => async (dispatch) => {
     const response = await securityAPI.getCaptchaUrl()
     const captchaUrl = response.data.url
     dispatch(getCaptchaUrlSuccess(captchaUrl))
 }
-
-
 
 export const logout = () => async (dispatch) => {
     let response = await authAPI.logout()
@@ -77,7 +66,4 @@ export const logout = () => async (dispatch) => {
     }
 }
 
-
-
-
-export default authReducer;
+export default authReducer

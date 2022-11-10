@@ -1,12 +1,11 @@
-import React from "react";
+import React from 'react'
 import s from './ProfileDataForm.module.css'
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field } from 'formik'
 
 
 const ProfileDataForm = (  { profile, isOwner, onSubmit, gotoViewMode} ) => {
-   debugger
+   
     return <div>
- 
         <Formik
 
             initialValues={profile}

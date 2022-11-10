@@ -1,19 +1,7 @@
-import React from "react";
-import s from './../Dialogs.module.css'
-
-
-
-let newMassageElement = React.createRef;
-let addMessage = () => {
-    let text = newMassageElement.current.value;
-    alert(text)
-    
-}
+import React from 'react'
 
 const Message = (props) => {
-    return <div>
-        <div className={s.dialogs}>{props.message}</div>
-    </div>
+    return <div>{props.message}</div>
 }
 
-export default Message;
+export default Message

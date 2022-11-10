@@ -1,5 +1,5 @@
-import { usersAPI } from "../api/Api"
-import { updateObjectInArray } from "../utilis/object-helpers"
+import { usersAPI } from '../api/Api'
+import { updateObjectInArray } from '../utilis/object-helpers'
 
 
 const FOLLOW = 'FOLLOW'
@@ -21,36 +21,28 @@ let initialState = {
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-
         case FOLLOW:
             return {
                 ...state,
-                users: updateObjectInArray(state.users, action.userId, 'id', {followed: true} )
-
+                users: updateObjectInArray(state.users, action.userId, 'id', { followed: true })
             }
-
         case UNFOLLOW:
             return {
                 ...state,
-
-                users: updateObjectInArray(state.users, action.userId, 'id', {followed: false} )
-    
+                users: updateObjectInArray(state.users, action.userId, 'id', { followed: false })
             }
-
         case SET_USERS: {
             return { ...state, users: action.users }
         }
         case SET_CURRENT_PAGE: {
             return { ...state, currentPage: action.currentPage }
         }
-
         case SET_TOTAL_USERS_COUNT: {
             return { ...state, totalUsersCount: action.count }
         }
         case TOGGLE_IS_FETCHING: {
             return { ...state, isFatching: action.isFatching }
         }
-
         case TOGGLE_IS_FOLLOWING_PROGRESS: {
             return {
                 ...state,
@@ -64,7 +56,6 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-
 export const followSuccess = (userId) => ({ type: FOLLOW, userId })
 export const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId })
 export const setUsers = (users) => ({ type: SET_USERS, users })
@@ -73,15 +64,11 @@ export const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_
 export const toggleIsFatching = (isFatching) => ({ type: TOGGLE_IS_FETCHING, isFatching })
 export const toggleFollowingProgress = (isFatching) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFatching })
 
-
-
 export const requestUsers = (page, pageSize) => {
     return async (dispatch) => {
-
         dispatch(toggleIsFatching(true))
         dispatch(setCurrentPage(page))
         let data = await usersAPI.getUsers(page, pageSize)
-
         dispatch(toggleIsFatching(false))
         dispatch(setUsers(data.items))
         dispatch(setTotalUsersCount(data.totalCount))
@@ -91,19 +78,14 @@ export const requestUsers = (page, pageSize) => {
 const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
     dispatch(toggleFollowingProgress(true, userId))
     let response = await apiMethod(userId)
-    debugger
     if (response.resultCode == 0) {
-        debugger
         dispatch(actionCreator(userId))
     }
-    debugger
     dispatch(toggleFollowingProgress(false, userId))
 }
 
-
 export const follow = (userId) => {
     return async (dispatch) => {
-
         followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccess)
     }
 }
@@ -114,5 +96,4 @@ export const unfollow = (userId) => {
     }
 }
 
-
-export default usersReducer;
+export default usersReducer
