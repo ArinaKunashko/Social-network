@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkreact01=self.webpackChunkreact01||[]).push([[594],{3594:function(e,n,r){r.r(n),r.d(n,{default:function(){return t}});r(2791);var c={},s=r(184),t=function(e){return(0,s.jsx)("div",{className:c.sidebar,children:e.friends})}}}]);
-//# sourceMappingURL=594.d23825e6.chunk.js.map
