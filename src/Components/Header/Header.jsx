@@ -1,17 +1,190 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import s from './Header.module.css'
-import { logout } from "../../Redux/auth-reducer";
+import React from 'react'
 import Button from '@mui/material/Button'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Toolbar from '@mui/material/Toolbar'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import Menu from '@mui/material/Menu'
+import MenuIcon from '@mui/icons-material/Menu'
+import Container from '@mui/material/Container'
+import Avatar from '@mui/material/Avatar'
+import Tooltip from '@mui/material/Tooltip'
+import MenuItem from '@mui/material/MenuItem'
+import AdbIcon from '@mui/icons-material/Adb'
+import GroupAddRoundedIcon from '@mui/icons-material/GroupAddRounded'
+import PublicRoundedIcon from '@mui/icons-material/PublicRounded'
+import ConnectWithoutContactRoundedIcon from '@mui/icons-material/ConnectWithoutContactRounded'
+import Groups3RoundedIcon from '@mui/icons-material/Groups3Rounded'
+import { useNavigate } from 'react-router-dom'
+import PersonIcon from '@mui/icons-material/Person'
+import { blue } from '@mui/material/colors'
+
 
 const Header = (props) => {
-    return <header className={s.header}>
-        <div className={s.loginBlock}>
-            {props.isAuth 
-            ? <div> {props.login} - <Button  variant='contained' onClick={props.logout}> Log out </Button> </div>
-            : <NavLink to={'/login'}> Login </NavLink>}
-        </div>
-    </header>
+
+    const navigate = useNavigate()
+    const [anchorElNav, setAnchorElNav] = React.useState(null)
+    const [anchorElUser, setAnchorElUser] = React.useState(null)
+
+    const handleOpenNavMenu = (event) => {
+        setAnchorElNav(event.currentTarget)
+    }
+
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget)
+    }
+
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null)
+    }
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null)
+    }
+
+    const handleLogout = () => {
+        setAnchorElUser(null)
+        props.logout()
+    }
+
+    return (
+        <AppBar position='static'>
+            <Container maxWidth='xl'>
+                <Toolbar disableGutters>
+                    {/* <ConnectWithoutContactRoundedIcon disableGutters sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
+                    <Groups3RoundedIcon disableGutters sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    {/* <AdbIcon disableGutters sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
+                    {/* <GroupAddRoundedIcon disableGutters sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
+                    {/* <PublicRoundedIcon disableGutters sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
+                    <Typography
+                        variant='h6'
+                        noWrap
+                        sx={{
+                            mr: 2,
+                            display: { xs: 'none', md: 'flex' },
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            letterSpacing: '.3rem',
+                            color: 'inherit',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        Social-Network
+                    </Typography>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                        <IconButton
+                            size='large'
+                            aria-label='account of current user'
+                            aria-controls='menu-appbar'
+                            aria-haspopup='true'
+                            onClick={handleOpenNavMenu}
+                            color='inherit'
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        {props.isAuth &&
+                            <Menu
+                                id='menu-appbar'
+                                anchorEl={anchorElNav}
+                                anchorOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'left',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'left',
+                                }}
+                                open={Boolean(anchorElNav)}
+                                onClose={handleCloseNavMenu}
+                                sx={{
+                                    display: { xs: 'block', md: 'none' },
+                                }}
+                            >
+                                <MenuItem onClick={() => navigate(`/profile`)}>
+                                    <Typography textAlign='center'>!!!</Typography>
+                                </MenuItem>
+                                <MenuItem onClick={() => navigate(`/dialogs`)}>
+                                    <Typography textAlign='center'>Messages</Typography>
+                                </MenuItem>
+                                <MenuItem onClick={() => navigate(`/users`)}>
+                                    <Typography textAlign='center'>Users</Typography>
+                                </MenuItem>
+                            </Menu>
+                        }
+                    </Box>
+                    <Groups3RoundedIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    <Typography
+                        variant='h5'
+                        noWrap
+                        sx={{
+                            mr: 2,
+                            display: { xs: 'flex', md: 'none' },
+                            flexGrow: 1,
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            letterSpacing: '.3rem',
+                            color: 'inherit',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        Social-Network
+                    </Typography>
+                    {props.isAuth &&
+                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                            <Button onClick={() => navigate(`/profile`)}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                Profile
+                            </Button>
+                            <Button onClick={() => navigate(`/dialogs`)}
+                                sx={{ my: 2, color: 'white', display: 'block' }} >
+                                Messages
+                            </Button>
+                            <Button onClick={() => navigate(`/users`)}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                Users
+                            </Button>
+                        </Box>
+                    }
+
+                    {props.isAuth &&
+                        <Box sx={{ flexGrow: 0 }}>
+                            <Tooltip title='Open settings'>
+                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                    <Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
+                                    {/* {profile.photos.large != null ? <Avatar src= {profile.photos.large} sx={{ width: 200, height: 200 }} />
+                                :  <Avatar sx={{ bgcolor: blue[100], color: blue[600], width: 200, height: 200 }}>
+                                    <PersonIcon sx={{width: 200, height: 200}} />
+                                </Avatar>} */}
+                                </IconButton>
+                            </Tooltip>
+                            <Menu
+                                sx={{ mt: '45px' }}
+                                id='menu-appbar'
+                                anchorEl={anchorElUser}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                open={Boolean(anchorElUser)}
+                                onClose={handleCloseUserMenu}
+                            >
+                                <MenuItem onClick={handleLogout}> Logout </MenuItem>
+                            </Menu>
+                        </Box>
+                    }
+                </Toolbar>
+            </Container>
+        </AppBar>
+    )
 }
 
-export default Header;
+export default Header

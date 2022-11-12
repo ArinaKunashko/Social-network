@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import Preloader from '../../common/preloader/preloader'
-import s from './ProfileInfo.module.css'
-import styles from '../../Users/users.module.css'
 import ProfileStatusWithHooks from './ProfileStatusWithHooks'
 import ProfileDataForm from './ProfileDataForm'
 import Button from '@mui/material/Button'
@@ -29,11 +27,8 @@ const ProfileInfo = ({ profile, updateStatus, isOwner, savePhoto, saveProfile, s
     return (
 
         <div>
-            <div>
-                <img src='https://img2.akspic.ru/previews/0/1/1/6/4/146110/146110-rev-lev-koshachih-tigr-monohromnyj-x750.jpg' className={styles.header} />
-            </div>
-            <div className={s.profilePage}>
-                <div className={s.descriptionBlock}>
+            <div >
+                <div>
                 {profile.photos.large != null ? <Avatar src= {profile.photos.large} sx={{ width: 200, height: 200 }} />
                                 :  <Avatar sx={{ bgcolor: blue[100], color: blue[600], width: 200, height: 200 }}>
                                     <PersonIcon sx={{width: 200, height: 200}} />
@@ -46,9 +41,9 @@ const ProfileInfo = ({ profile, updateStatus, isOwner, savePhoto, saveProfile, s
                    </Button>
                     }
                     <div />
-                    <div className={s.information}>
-                        <div className={s.fullName}>  {profile.fullName} </div>
-                        <div className={s.profileStatus}><ProfileStatusWithHooks status={status} updateStatus={updateStatus} /> </div>
+                    <div>
+                        <div >  {profile.fullName} </div>
+                        <div ><ProfileStatusWithHooks status={status} updateStatus={updateStatus} /> </div>
                     </div>
                     {editMode
                         ? <ProfileDataForm profile={profile}

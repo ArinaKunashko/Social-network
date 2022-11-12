@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import './App.css'
 import HeaderContainer from './Components/Header/HeaderContainer'
-import Navbar from './Components/Navbar/Navbar'
+// import Navbar from './Components/Navbar/Navbar'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Component } from 'react'
 import { connect } from 'react-redux'
@@ -39,7 +39,7 @@ class App extends Component {
       <BrowserRouter>
         <div className='app-wrapper'>
           <HeaderContainer />
-          <Navbar />
+          {/* <Navbar /> */}
           <div className='app-wrapper-content'>
             <Suspense fallback={<Preloader />}>
               <Routes>
