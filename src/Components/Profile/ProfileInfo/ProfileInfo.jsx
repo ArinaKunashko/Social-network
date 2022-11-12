@@ -39,7 +39,7 @@ const ProfileInfo = ({ profile, updateStatus, isOwner, savePhoto, saveProfile, s
                                     <PersonIcon sx={{width: 200, height: 200}} />
                                 </Avatar>}
         
-                    {isOwner && 
+                    {isOwner && editMode && 
                      <Button variant='contained' component='label'>
                      Upload
                      <input hidden accept='image/*' type='file' onChange={onMainPhotoSelected} />

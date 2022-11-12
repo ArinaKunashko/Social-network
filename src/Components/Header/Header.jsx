@@ -2,13 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import s from './Header.module.css'
 import { logout } from "../../Redux/auth-reducer";
-
+import Button from '@mui/material/Button'
 
 const Header = (props) => {
     return <header className={s.header}>
         <div className={s.loginBlock}>
             {props.isAuth 
-            ? <div> {props.login} - <button className = {s.buttonLogout} onClick={props.logout}> Log out </button> </div>
+            ? <div> {props.login} - <Button  variant='contained' onClick={props.logout}> Log out </Button> </div>
             : <NavLink to={'/login'}> Login </NavLink>}
         </div>
     </header>

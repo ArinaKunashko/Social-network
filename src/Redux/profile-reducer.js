@@ -1,14 +1,11 @@
 import { usersAPI, profileAPI } from "../api/Api"
 
-
 const ADD_POST = 'ADD-POST'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_STATUS = 'SET_STATUS'
 const DELETE_POST = 'DELETE_POST'
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS'
 const SAVE_PROFILE_SUCCESS = 'SAVE_PROFILE_SUCCESS'
-
-
 
 let initialState = {
     posts: [
@@ -17,14 +14,9 @@ let initialState = {
         { id: 3, message: 'Life is like a box of chocolates, you never know what you’re gonna get' },
 
     ],
-
     profile: null,
     status: ' ',
-
-
 }
-
-
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -68,17 +60,14 @@ const profileReducer = (state = initialState, action) => {
             }
         }
 
-
         case SAVE_PROFILE_SUCCESS: {
             return {
                 ...state,
-                profile: action.profile,
+                profile: { ...action.profile, photos: state.profile.photos }
             }
         }
-
         default:
             return state
-
     }
 }
 
@@ -89,20 +78,16 @@ export const deletePost = (postId) => ({ type: DELETE_POST, postId })
 export const savePhotoSuccess = (photos) => ({ type: SAVE_PHOTO_SUCCESS, photos })
 export const saveProfileSuccess = (profile) => ({ type: SAVE_PROFILE_SUCCESS, profile })
 
-
-
 export const getUserProfile = (userId) => async (dispatch) => {
     let response = await usersAPI.getProfile(userId)
     dispatch(setUserProfile(response.data))
 
 }
 
-
 export const getStatus = (userId) => async (dispatch) => {
     let response = await profileAPI.getStatus(userId)
     dispatch(setStatus(response.data))
 }
-
 
 export const updateStatus = (status) => async (dispatch) => {
     try {
@@ -116,7 +101,6 @@ alert('Somethig wrong')
     }
 }
 
-
 export const savePhoto = (file) => async (dispatch) => {
     let response = await profileAPI.savePhoto(file)
     if (response.data.resultCode === 0) {
@@ -125,7 +109,6 @@ export const savePhoto = (file) => async (dispatch) => {
 }
 
 export const saveProfile = (profile) => async (dispatch, getState) => {
-    debugger
     let response = await profileAPI.saveProfile(profile)
     if (response.data.resultCode === 0) {
 
@@ -133,4 +116,4 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
     }
 }
 
-export default profileReducer;
+export default profileReducer

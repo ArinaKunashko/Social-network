@@ -119,10 +119,11 @@ const Login = (props) => {
                             error={formik.touched.password && Boolean(formik.errors.password)}
                             helperText={formik.touched.password && formik.errors.password}
                         />
-                        <FormControlLabel
-                            control={<Checkbox value='remember'
+                        <FormControlLabel name='rememberMe'
+                            control={<Checkbox onChange={formik.handleChange}
+                                checked={formik.values.rememberMe}
                                 color='primary' />}
-                            label="Remember me"
+                            label='Remember me'
                         />
                         <Button
                             type='submit'
