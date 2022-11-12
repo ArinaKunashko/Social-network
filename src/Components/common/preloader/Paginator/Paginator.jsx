@@ -7,12 +7,13 @@ const Paginator = ({ totalItemsCount, pageSize, currentPage, onPageChanged }) =>
     const pagesCount = Math.ceil(totalItemsCount / pageSize)
     const handlePageNumberChange = (event, value) => onPageChanged(value)
 
-    return <Stack spacing={2} alignItems='center'>
+    return <Stack spacing={2} alignItems='center' >
          <Pagination count={pagesCount} 
          siblingCount={5}
          size='large'
          shape="rounded" 
          onChange={handlePageNumberChange}
+         color='secondary'
           />
     </Stack >
 }

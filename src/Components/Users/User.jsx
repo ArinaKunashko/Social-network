@@ -3,7 +3,6 @@ import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import PersonIcon from '@mui/icons-material/Person'
-import { blue } from '@mui/material/colors'
 import Avatar from '@mui/material/Avatar'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions'
@@ -19,13 +18,13 @@ const User = ({ user, followingInProgress, unfollow, follow }) => {
     return (
 
         <Box sx={{ padding: '20px 30px', flexGrow: 1, }}>
-            <Card sx={{ minWidth: 275 }}>
+            <Card sx={{ minWidth: 275, backgroundColor: '#ffffff' }}>
                 <CardActionArea onClick={() => navigate(`/profile/${user.id}`)} >
                     <CardContent>
                         <Grid container>
                             <Grid item xs={2}>
                                 {user.photos.small != null ? <Avatar src={user.photos.small} sx={{ width: 100, height: 100 }} />
-                                    : <Avatar sx={{ bgcolor: blue[100], color: blue[600], width: 100, height: 100 }}>
+                                    : <Avatar sx={{ bgcolor: '#004D40', color: '#004D40'[600], width: 100, height: 100 }}>
                                         <PersonIcon sx={{ width: 50, height: 50 }} />
                                     </Avatar>}
                             </Grid>
@@ -42,13 +41,19 @@ const User = ({ user, followingInProgress, unfollow, follow }) => {
                 </CardActionArea>
                 <CardActions>
                     {user.followed
-                        ? <Button size='small'
+                        ? <Button
+                            color='secondary'
+                            size='small'
+                            sx={{ margin: '7px 18px' }}
                             disabled={followingInProgress.some(id => id === user.id)}
                             onClick={() => {
                                 unfollow(user.id)
                             }}> Unfollow </Button>
-                        : <Button size='small'
-                            variant='contained'
+                        : <Button
+                            color='secondary'
+                            size='small'
+                            sx={{ margin: '7px 18px' }}
+                            variant='outlined'
                             disabled={followingInProgress.some(id => id === user.id)}
                             onClick={() => {
                                 follow(user.id)

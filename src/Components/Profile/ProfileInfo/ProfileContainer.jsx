@@ -1,14 +1,10 @@
-import React, { Component } from "react";
-import Profile from "../Profile";
-import { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile } from "../../../Redux/profile-reducer";
-import { connect } from "react-redux";
-import { useLocation, useNavigate, useParams } from "react-router-dom"
-import { withAuthNavigate } from "../../../hoc/withAuthNavigare";
-import { compose } from "redux";
-
-
-
-
+import React, { Component } from 'react'
+import Profile from '../Profile'
+import { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile } from '../../../Redux/profile-reducer'
+import { connect } from 'react-redux'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { withAuthNavigate } from '../../../hoc/withAuthNavigare'
+import { compose } from 'redux'
 
 class ProfileContainer extends React.Component {
 
@@ -20,16 +16,14 @@ class ProfileContainer extends React.Component {
                 this.props.history.push("/login")
             }
         }
-
         this.props.getUserProfile(userId)
         this.props.getStatus(userId)
     }
 
-
     componentDidMount() {
         this.refreshProfile()
-
     }
+
     componentDidUpdate(prevProps) {
         if (this.props.router.params.userId != prevProps.router.params.userId) {
             this.refreshProfile()
@@ -37,6 +31,7 @@ class ProfileContainer extends React.Component {
     }
     render() {
         return (
+
             <Profile {...this.props}
                 isOwner={!this.props.router.params.userId}
                 profile={this.props.profile}
@@ -48,14 +43,12 @@ class ProfileContainer extends React.Component {
     }
 }
 
-
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
     authorizedUserIdUserId: state.auth.userId,
     isAuth: state.auth.isAuth,
 })
-
 
 function withRouter(Component) {
     function ComponentWithRouterProp(props) {

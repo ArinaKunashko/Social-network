@@ -14,7 +14,6 @@ import ListItem from '@mui/material/ListItem'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import ListItemText from '@mui/material/ListItemText'
 import PersonIcon from '@mui/icons-material/Person'
-import { blue } from '@mui/material/colors'
 import Grid from '@mui/material/Grid'
 
 const validationSchema = yup.object({
@@ -40,7 +39,7 @@ const Dialogs = (props) => {
         state.dialogs.map(d =>
             <ListItem button onClick={handleClickOpen} key={d.name}>
                 <ListItemAvatar>
-                    <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
+                    <Avatar sx={{ bgcolor: '#004D40', color: '#004D40'[600] }}>
                         <PersonIcon />
                     </Avatar>
                 </ListItemAvatar>
@@ -66,7 +65,7 @@ const Dialogs = (props) => {
 
     return (
 
-        <Box sx={{ padding: '30px', flexGrow: 1 }}>
+        <Box sx={{ padding: '30px', flexGrow: 1, backgroundColor:'white' }}>
             <Grid container spacing={2}>
                 <Grid item xs={4}>
                     <List>{dialogElements}</List>
@@ -78,6 +77,7 @@ const Dialogs = (props) => {
                         onSubmit={formik.handleSubmit}
                         sx={{ mt: 1 }}>
                         <TextField margin='normal'
+                        color='secondary'
                             fullWidth
                             id='newMessageBody'
                             label='Your message'
@@ -89,7 +89,7 @@ const Dialogs = (props) => {
                             error={formik.touched.newMessageBody && Boolean(formik.errors.newMessageBody)}
                             helperText={formik.touched.newMessageBody && formik.errors.newMessageBody}
                         />
-                        <Button variant='contained' type='submit' >Send</Button>
+                        <Button color='secondary' variant='contained' type='submit' >Send</Button>
                     </Box>
                 </Grid>
                 <Dialog

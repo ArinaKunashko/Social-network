@@ -1,7 +1,6 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
-import { connect } from "react-redux";
-
+import React from 'react'
+import { Navigate } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 let mapStateToPropsForNavigate =(state) => ({
     isAuth: state.auth.isAuth
@@ -10,12 +9,12 @@ let mapStateToPropsForNavigate =(state) => ({
 export const withAuthNavigate = (Component) => {
 class NavigateComponent extends React.Component {
     render () {
-        if (!this.props.isAuth) return <Navigate to="/login"/>;
+        if (!this.props.isAuth) return <Navigate to='/login'/>;
         return <Component {...this.props}/>
     }
 }
 
 let ConnectedAuthNavigateComponent=connect(mapStateToPropsForNavigate)(NavigateComponent)
 
-return ConnectedAuthNavigateComponent;
+return ConnectedAuthNavigateComponent
 }

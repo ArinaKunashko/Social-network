@@ -20,9 +20,6 @@ root.render(
     //       <App />
     //     </Provider>
     // </React.StrictMode> 
-  );
+  )
 
-reportWebVitals();
-
-
-
+reportWebVitals()

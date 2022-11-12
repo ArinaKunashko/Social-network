@@ -1,5 +1,4 @@
-import React from "react";
-
+import React from 'react'
 
 class ProfileStatus extends React.Component {
 
@@ -25,7 +24,6 @@ class ProfileStatus extends React.Component {
             status: e.currentTarget.value
         })
     }
-
 
     componentDidUpdate(prevProps, prevState) {
 

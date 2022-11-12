@@ -1,15 +1,14 @@
-import dialogsReducer, {sendMessageCreator} from "./dialogs-reducer";
-
+import dialogsReducer, {sendMessageCreator} from './dialogs-reducer'
 
 let state = {
     
     dialogs: [
-        { id: 1, name: 'Arina' },
-        { id: 2, name: 'Roma' },
-        { id: 3, name: 'Angelina' },
-        { id: 4, name: 'Anastasia' },
-        { id: 5, name: 'Vitaly' },
-        { id: 6, name: 'Nina' }
+        { id: 1, name: 'Maria' },
+        { id: 2, name: 'Timofey' },
+        { id: 3, name: 'Milania' },
+        { id: 4, name: 'Miron' },
+        { id: 5, name: 'Matvey' },
+        { id: 6, name: 'Vita' }
     ],
     messages: [
         { id: 1, message: 'Hi' },
@@ -23,15 +22,14 @@ let state = {
 }
 
 test('length of dialogs should be incremented ', () => {
-    let action = sendMessageCreator("Hello World!")
+    let action = sendMessageCreator('Hello World!')
    let newState = dialogsReducer(state, action)
     expect(newState.messages.length).toBe(7)
-
-  });
+  })
   
 test('message of message should be correct ', () => {
-    let action = sendMessageCreator("Hello World!")
+    let action = sendMessageCreator('Hello World!')
    let newState = dialogsReducer(state, action)
-    expect(newState.messages[6].message).toBe("Hello World!")
-
-  });
+    expect(newState.messages[6].message).toBe('Hello World!')
+  })
+  

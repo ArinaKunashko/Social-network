@@ -1,4 +1,4 @@
-import { usersAPI, profileAPI } from "../api/Api"
+import { usersAPI, profileAPI } from '../api/Api'
 
 const ADD_POST = 'ADD-POST'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
@@ -12,7 +12,6 @@ let initialState = {
         { id: 1, message: 'If you are the smartest person in the room, then you are not in the room where you should be.' },
         { id: 2, message: 'All we have to decide is what to do with the time that is given to us'  },
         { id: 3, message: 'Life is like a box of chocolates, you never know what you’re gonna get' },
-
     ],
     profile: null,
     status: ' ',
@@ -44,14 +43,12 @@ const profileReducer = (state = initialState, action) => {
                 status: action.status
             }
         }
-
         case DELETE_POST: {
             return {
                 ...state,
                 posts: state.posts.filter(p => p.id != action.postId)
             }
         }
-
         case SAVE_PHOTO_SUCCESS: {
 
             return {
@@ -59,7 +56,6 @@ const profileReducer = (state = initialState, action) => {
                 profile: { ...state.profile, photos: action.photos }
             }
         }
-
         case SAVE_PROFILE_SUCCESS: {
             return {
                 ...state,
@@ -81,7 +77,6 @@ export const saveProfileSuccess = (profile) => ({ type: SAVE_PROFILE_SUCCESS, pr
 export const getUserProfile = (userId) => async (dispatch) => {
     let response = await usersAPI.getProfile(userId)
     dispatch(setUserProfile(response.data))
-
 }
 
 export const getStatus = (userId) => async (dispatch) => {

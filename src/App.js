@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react'
 import './App.css'
 import HeaderContainer from './Components/Header/HeaderContainer'
-// import Navbar from './Components/Navbar/Navbar'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Component } from 'react'
 import { connect } from 'react-redux'
@@ -9,6 +8,7 @@ import { initializeApp } from './Redux/app-reducer'
 import Preloader from './Components/common/preloader/preloader'
 import store from './Redux/redux-store'
 import { Provider } from 'react-redux'
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 
 const ProfileContainer = React.lazy(() => import('./Components/Profile/ProfileInfo/ProfileContainer'))
 const DialogsContainer = React.lazy(() => import('./Components/Dialogs/DialogsContainer'))
@@ -34,12 +34,26 @@ class App extends Component {
     //   return <Preloader />
     // }
 
+    const theme = createTheme({
+      palette: {
+        primary: {
+          main: '#252424',
+        },
+        secondary: {
+          main: '#004D40',
+        },
+        orange: {
+          main: '#FDD835',
+        },
+      },
+    })
+
     return (
 
+      <ThemeProvider theme={theme}>
       <BrowserRouter>
         <div className='app-wrapper'>
           <HeaderContainer />
-          {/* <Navbar /> */}
           <div className='app-wrapper-content'>
             <Suspense fallback={<Preloader />}>
               <Routes>
@@ -55,6 +69,7 @@ class App extends Component {
           </div>
         </div>
       </BrowserRouter>
+      </ThemeProvider>
     )
   }
 }

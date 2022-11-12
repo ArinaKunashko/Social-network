@@ -21,7 +21,7 @@ const ProfileDataForm = ({ profile, isOwner, onSubmit, gotoViewMode }) => {
     })
 
     return <div>
-        <Box sx={{ padding: '30px', flexGrow: 1 }}>
+        <Box sx={{ padding: '30px', flexGrow: 1, color: 'secondary' }}>
             <Box component='form'
                 noValidate
                 onSubmit={formik.handleSubmit}
@@ -35,6 +35,7 @@ const ProfileDataForm = ({ profile, isOwner, onSubmit, gotoViewMode }) => {
                     onChange={formik.handleChange}
                     error={formik.touched.fullName && Boolean(formik.errors.fullName)}
                     helperText={formik.touched.fullName && formik.errors.fullName}
+                    color='secondary'
                 />
                 <TextField margin='normal'
                     fullWidth
@@ -43,11 +44,12 @@ const ProfileDataForm = ({ profile, isOwner, onSubmit, gotoViewMode }) => {
                     autoComplete='aboutMe'
                     value={formik.values.aboutMe}
                     onChange={formik.handleChange}
+                    color='secondary'
                 />
                 <FormControlLabel name='lookingForAJob'
                     control={<Checkbox checked={formik.values.lookingForAJob}
                         onChange={formik.handleChange}
-                        color='primary' />}
+                        color='secondary' />}
                     label='Are you looking for a job?'
                 />
                 <TextField margin='normal'
@@ -57,6 +59,7 @@ const ProfileDataForm = ({ profile, isOwner, onSubmit, gotoViewMode }) => {
                     autoComplete='lookingForAJobDescription'
                     value={formik.values.lookingForAJobDescription}
                     onChange={formik.handleChange}
+                    color='secondary'
                 />
                 <TextField margin='normal'
                     fullWidth
@@ -65,6 +68,7 @@ const ProfileDataForm = ({ profile, isOwner, onSubmit, gotoViewMode }) => {
                     autoComplete='contacts.github'
                     value={formik.values.contacts.github}
                     onChange={formik.handleChange}
+                    color='secondary'
                 />
                 <TextField margin='normal'
                     fullWidth
@@ -73,6 +77,7 @@ const ProfileDataForm = ({ profile, isOwner, onSubmit, gotoViewMode }) => {
                     autoComplete='contacts.vk'
                     value={formik.values.contacts.vk}
                     onChange={formik.handleChange}
+                    color='secondary'
                 />
                 <TextField margin='normal'
                     fullWidth
@@ -81,6 +86,7 @@ const ProfileDataForm = ({ profile, isOwner, onSubmit, gotoViewMode }) => {
                     autoComplete='contacts.twitter'
                     value={formik.values.contacts.twitter}
                     onChange={formik.handleChange}
+                    color='secondary'
                 />
                 <TextField margin='normal'
                     fullWidth
@@ -89,9 +95,11 @@ const ProfileDataForm = ({ profile, isOwner, onSubmit, gotoViewMode }) => {
                     autoComplete='contacts.instagram'
                     value={formik.values.contacts.instagram}
                     onChange={formik.handleChange}
+                    color='secondary'
                 />
-                {isOwner && <div> <Button variant='contained' type='submit' > Save </Button>
-                    <Button variant='text' onClick={gotoViewMode}  > Cancel </Button>
+                {isOwner && <div> 
+                    <Button color='secondary' sx={{ margin: '20px' }} variant='contained' type='submit' > Save </Button>
+                    <Button color='secondary' sx={{ margin: '20px' }} variant='text' onClick={gotoViewMode} > Cancel </Button>
                 </div>
                 }
             </Box>

@@ -4,12 +4,12 @@ const SEND_MESSAGE = 'SEND-MESSAGE'
 let initialState = {
     
         dialogs: [
-            { id: 1, name: 'Arina' },
-            { id: 2, name: 'Roma' },
-            { id: 3, name: 'Angelina' },
-            { id: 4, name: 'Anastasia' },
-            { id: 5, name: 'Vitaly' },
-            { id: 6, name: 'Nina' }
+            { id: 1, name: 'Maria' },
+            { id: 2, name: 'Timofey' },
+            { id: 3, name: 'Milania' },
+            { id: 4, name: 'Miron' },
+            { id: 5, name: 'Matvey' },
+            { id: 6, name: 'Vita' }
         ],
         messages: [
             { id: 1, message: 'Hi' },
@@ -18,10 +18,8 @@ let initialState = {
             { id: 4, message: 'How things?' },
             { id: 5, message: 'Anythings new?' },
             { id: 6, message: 'Any news?' },
-        ], 
-        
+        ],    
     }
-
 
 const dialogsReducer = (state = initialState, action) => {
 
@@ -33,7 +31,6 @@ const dialogsReducer = (state = initialState, action) => {
             newMessageBody: action.body
         }
             
-        
         case SEND_MESSAGE: 
         let body = action.newMessageBody
        return {
@@ -57,4 +54,4 @@ export const updateNewMessageBodyCreator = (body) => {
         body: body
     }
 }
-export default dialogsReducer;
+export default dialogsReducer

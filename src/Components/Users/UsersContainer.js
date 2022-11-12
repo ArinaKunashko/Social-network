@@ -1,13 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { follow, unfollow, setCurrentPage, toggleFollowingProgress, requestUsers } from '../../Redux/users-reducer';
-import Users from './Users';
-import Preloader from '../common/preloader/preloader';
-import { withAuthNavigate } from '../../hoc/withAuthNavigare';
-import { compose } from 'redux';
+import React from 'react'
+import { connect } from 'react-redux'
+import { follow, unfollow, setCurrentPage, toggleFollowingProgress, requestUsers } from '../../Redux/users-reducer'
+import Users from './Users'
+import Preloader from '../common/preloader/preloader'
+import { withAuthNavigate } from '../../hoc/withAuthNavigare'
+import { compose } from 'redux'
 import { getPageSize, getTotalUsersCount, getCurrentPage, getIsFatching, getFollowingInProgress, getUsers } from '../../Redux/users-selectors'
-
-
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -53,4 +51,3 @@ export default compose(
     withAuthNavigate,
     connect(mapStateToProps, { follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsers: requestUsers })
 )(UsersContainer)
-

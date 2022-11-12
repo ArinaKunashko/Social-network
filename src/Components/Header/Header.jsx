@@ -18,7 +18,7 @@ import ConnectWithoutContactRoundedIcon from '@mui/icons-material/ConnectWithout
 import Groups3RoundedIcon from '@mui/icons-material/Groups3Rounded'
 import { useNavigate } from 'react-router-dom'
 import PersonIcon from '@mui/icons-material/Person'
-import { blue } from '@mui/material/colors'
+
 
 
 const Header = (props) => {
@@ -156,7 +156,7 @@ const Header = (props) => {
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                     <Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
                                     {/* {profile.photos.large != null ? <Avatar src= {profile.photos.large} sx={{ width: 200, height: 200 }} />
-                                :  <Avatar sx={{ bgcolor: blue[100], color: blue[600], width: 200, height: 200 }}>
+                                :  <Avatar sx={{ bgcolor: '#4408CE', color: '#4408CE'[600] }}, width: 200, height: 200 }}>
                                     <PersonIcon sx={{width: 200, height: 200}} />
                                 </Avatar>} */}
                                 </IconButton>

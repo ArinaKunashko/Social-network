@@ -1,7 +1,6 @@
 import { usersAPI } from '../api/Api'
 import { updateObjectInArray } from '../utilis/object-helpers'
 
-
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
