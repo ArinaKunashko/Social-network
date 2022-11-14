@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import './App.css'
 import HeaderContainer from './Components/Header/HeaderContainer'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { initializeApp } from './Redux/app-reducer'
@@ -51,24 +51,24 @@ class App extends Component {
     return (
 
       <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <div className='app-wrapper'>
-          <HeaderContainer />
-          <div className='app-wrapper-content'>
-            <Suspense fallback={<Preloader />}>
-              <Routes>
-                <Route exact path='/dialogs' element={<DialogsContainer />} />
-                <Route path='/profile' element={<ProfileContainer />} />
-                <Route path='/Social-network' element={<Navigate to='/profile' />} />
-                <Route path='/profile/:userId' element={<ProfileContainer />} />
-                <Route path='/users' element={<UsersContainer />} />
-                <Route path='/login' element={<LoginPage />} />
-                <Route path='*' element={<div> 404 NOT FOUND </div>} />
-              </Routes>
-            </Suspense>
+        <HashRouter>
+          <div className='app-wrapper'>
+            <HeaderContainer />
+            <div className='app-wrapper-content'>
+              <Suspense fallback={<Preloader />}>
+                <Routes>
+                  <Route path='/' element={<Navigate to='/profile' />} />
+                  <Route exact path='/dialogs' element={<DialogsContainer />} />
+                  <Route path='/profile' element={<ProfileContainer />} />
+                  <Route path='/profile/:userId' element={<ProfileContainer />} />
+                  <Route path='/users' element={<UsersContainer />} />
+                  <Route path='/login' element={<LoginPage />} />
+                  {/* <Route path='*' element={<div> 404 NOT FOUND </div>} /> */}
+                </Routes>
+              </Suspense>
+            </div>
           </div>
-        </div>
-      </BrowserRouter>
+        </HashRouter>
       </ThemeProvider>
     )
   }

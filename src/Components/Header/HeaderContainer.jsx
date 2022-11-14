@@ -6,13 +6,13 @@ import { connect } from 'react-redux'
 
 class HeaderContainer extends React.Component {
     render() {
-        return <Header {...this.props} />
+        return <Header {...this.props}  />
     }
 }
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
     login: state.auth.login,
-    profile: state.profile,
+    profilePhoto: state.profilePage.profile ? state.profilePage.profile.photos.small : null,
 })
 
 export default connect(mapStateToProps, { logout })(HeaderContainer)

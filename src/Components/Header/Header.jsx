@@ -11,18 +11,10 @@ import Container from '@mui/material/Container'
 import Avatar from '@mui/material/Avatar'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
-import AdbIcon from '@mui/icons-material/Adb'
-import GroupAddRoundedIcon from '@mui/icons-material/GroupAddRounded'
-import PublicRoundedIcon from '@mui/icons-material/PublicRounded'
-import ConnectWithoutContactRoundedIcon from '@mui/icons-material/ConnectWithoutContactRounded'
 import Groups3RoundedIcon from '@mui/icons-material/Groups3Rounded'
 import { useNavigate } from 'react-router-dom'
-import PersonIcon from '@mui/icons-material/Person'
-
-
 
 const Header = (props) => {
-
     const navigate = useNavigate()
     const [anchorElNav, setAnchorElNav] = React.useState(null)
     const [anchorElUser, setAnchorElUser] = React.useState(null)
@@ -103,7 +95,7 @@ const Header = (props) => {
                                 }}
                             >
                                 <MenuItem onClick={() => navigate(`/profile`)}>
-                                    <Typography textAlign='center'>!!!</Typography>
+                                    <Typography textAlign='center'>Profile</Typography>
                                 </MenuItem>
                                 <MenuItem onClick={() => navigate(`/dialogs`)}>
                                     <Typography textAlign='center'>Messages</Typography>
@@ -154,11 +146,7 @@ const Header = (props) => {
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title='Open settings'>
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
-                                    {/* {profile.photos.large != null ? <Avatar src= {profile.photos.large} sx={{ width: 200, height: 200 }} />
-                                :  <Avatar sx={{ bgcolor: '#4408CE', color: '#4408CE'[600] }}, width: 200, height: 200 }}>
-                                    <PersonIcon sx={{width: 200, height: 200}} />
-                                </Avatar>} */}
+                                    <Avatar src={props.profilePhoto} />
                                 </IconButton>
                             </Tooltip>
                             <Menu
