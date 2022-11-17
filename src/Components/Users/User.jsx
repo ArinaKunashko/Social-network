@@ -18,7 +18,7 @@ const User = ({ user, followingInProgress, unfollow, follow }) => {
     return (
 
         <Box sx={{ padding: '20px 30px', flexGrow: 1, }}>
-            <Card sx={{ minWidth: 275, backgroundColor: '#ffffff' }}>
+            <Card sx={{ minWidth: 300, backgroundColor: '#ffffff' }}>
                 <CardActionArea onClick={() => navigate(`/profile/${user.id}`)} >
                     <CardContent>
                         <Grid container>
