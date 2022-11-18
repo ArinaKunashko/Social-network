@@ -44,11 +44,7 @@ const Header = (props) => {
         <AppBar position='static'>
             <Container maxWidth='xl'>
                 <Toolbar disableGutters>
-                    {/* <ConnectWithoutContactRoundedIcon disableGutters sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
-                    <Groups3RoundedIcon disableGutters sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-                    {/* <AdbIcon disableGutters sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
-                    {/* <GroupAddRoundedIcon disableGutters sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
-                    {/* <PublicRoundedIcon disableGutters sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
+                    <Groups3RoundedIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
                         variant='h6'
                         noWrap

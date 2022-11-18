@@ -18,7 +18,7 @@ const validationSchema = yup.object({
 
 const MyPost = (props) => {
     const postsElements =
-        props.posts.map(posts => <Post message={posts.message} likesCount={posts.likesCount} />)
+        props.posts.map(post => <Post message={post.message} likesCount={post.likesCount} key={post.id} />)
     const onAddPost = (values, { resetForm }) => {
         props.addPost(values.newPostText)
         resetForm({ newPostText: '' })
@@ -59,7 +59,7 @@ const MyPost = (props) => {
                                 helperText={formik.touched.newPostText && formik.errors.newPostText}
                             />
                             <Button color='secondary' variant='contained' type='submit' sx={{ margin: '20px' }}>Add post</Button>
-                            <Box item sx={{ margin: '20px' }}>
+                            <Box sx={{ margin: '20px' }}>
                                 <List> {postsElements} </List>
                             </Box>
                         </Box>

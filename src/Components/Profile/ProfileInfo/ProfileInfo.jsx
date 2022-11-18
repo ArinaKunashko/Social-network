@@ -52,12 +52,9 @@ const ProfileInfo = ({ profile, updateStatus, isOwner, savePhoto, saveProfile, s
                             <Typography variant='h5' component='div'>
                                 {profile.fullName}
                             </Typography>
-                            <Typography>
-
-                                <ListItemText >
-                                    <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
-                                </ListItemText>
-                            </Typography>
+                            <ListItemText >
+                                <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
+                            </ListItemText>
                             <Typography variant='h7' component='div'>
                                 {editMode
                                     ? <ProfileDataForm profile={profile}
