@@ -146,7 +146,7 @@ const Header = (props) => {
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title='Logout'>
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar src={props.profilePhoto} />
+                                    <Avatar src={props.photo} />
                                 </IconButton>
                             </Tooltip>
                             <Menu

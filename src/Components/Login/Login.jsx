@@ -16,18 +16,25 @@ import Grid from '@mui/material/Grid'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 
-const validationSchema = yup.object({
-    email: yup
-        .string('Enter your email')
-        .email('Enter a valid email')
-        .required('Email is required'),
-    password: yup
-        .string('Enter your password')
-        .min(8, 'Password should be of minimum 8 characters length')
-        .required('Password is required'),
-})
-
 const Login = (props) => {
+    const validationSchema = yup.object({
+        isCaptchaRequire: yup.boolean(),
+        email: yup
+            .string('Enter your email')
+            .email('Enter a valid email')
+            .required('Email is required'),
+        password: yup
+            .string('Enter your password')
+            .min(4, 'Password should be of minimum 4 characters length')
+            .required('Password is required'),
+        captcha: yup
+            .string('Enter captcha').when('isCaptchaRequire', {
+                is: (isCaptchaRequire) => props.captchaUrl,
+                then: yup.string().required('Captcha is required'),
+                otherwise: yup.string()
+              })
+    })
+
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -119,6 +126,24 @@ const Login = (props) => {
                             error={formik.touched.password && Boolean(formik.errors.password)}
                             helperText={formik.touched.password && formik.errors.password}
                         />
+                        {props.captchaUrl && 
+                        <div>
+                            <img src={props.captchaUrl} />
+                            <TextField
+                            margin='normal'
+                            required
+                            fullWidth
+                            name='captcha'
+                            label='Enter captcha'
+                            type='test'
+                            id='captcha'
+                            value={formik.values.captcha}
+                            onChange={formik.handleChange}
+                            error={formik.touched.captcha && Boolean(formik.errors.captcha)}
+                            helperText={formik.touched.captcha && formik.errors.captcha}
+                        />
+                        </div>
+                        }
                         <FormControlLabel name='rememberMe'
                             control={<Checkbox onChange={formik.handleChange}
                                 checked={formik.values.rememberMe}

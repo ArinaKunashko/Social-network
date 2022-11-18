@@ -1,4 +1,5 @@
 import { authAPI, securityAPI } from '../api/Api'
+import { SET_USER_PROFILE } from './profile-reducer'
 
 const SET_USER_DATA = 'SET_USER_DATA'
 const GET_CAPTCHA_URL_SUCCESS = 'https://social-network/auth/GET_CAPTCHA_URL_SUCCESS'
@@ -19,6 +20,14 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 ...action.payload,
             }
+        case SET_USER_PROFILE:
+            if (state.userId === action.profile.userId && action.profile.photos) {
+                return {
+                    ...state,
+                    photo: action.profile.photos.small
+                }
+            }
+            return state
         default:
             return state
     }
