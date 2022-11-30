@@ -21,9 +21,9 @@ const Post = (props) => {
     }
 
     return <Grid container sx={{ marginBottom: '20px' }}>
-        <Grid item xs={1}>  <Avatar src={photosProfile} /> </Grid>
-        <Grid item xs={10}> <T variant='h7' component='div'> {props.message} </T> </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={3} md={1}>  <Avatar src={photosProfile} /> </Grid>
+        <Grid item xs={8} md={10}> <T variant='h7' component='div'> {props.message} </T> </Grid>
+        <Grid item xs={1} md={1}>
             <IconButton color='secondary' onClick={toggleLike} >
                 {likesCount
                     ? <FavoriteIcon />

@@ -22,13 +22,13 @@ const User = ({ user, followingInProgress, unfollow, follow }) => {
                 <CardActionArea onClick={() => navigate(`/profile/${user.id}`)} >
                     <CardContent>
                         <Grid container>
-                            <Grid item xs={2}>
+                            <Grid item xs={5} md={2}>
                                 {user.photos.small != null ? <Avatar src={user.photos.small} sx={{ width: 100, height: 100 }} />
                                     : <Avatar sx={{ bgcolor: '#004D40', color: '#004D40'[600], width: 100, height: 100 }}>
                                         <PersonIcon sx={{ width: 50, height: 50 }} />
                                     </Avatar>}
                             </Grid>
-                            <Grid item xs={10}>
+                            <Grid item xs={7} md={10}>
                                 <Typography variant="h5" component='div'>
                                     {user.name}
                                 </Typography>

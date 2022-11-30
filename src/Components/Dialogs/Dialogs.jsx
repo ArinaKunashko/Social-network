@@ -67,10 +67,10 @@ const Dialogs = (props) => {
 
         <Box sx={{ padding: '30px', flexGrow: 1, backgroundColor:'white' }}>
             <Grid container spacing={2}>
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                     <List>{dialogElements}</List>
                 </Grid>
-                <Grid item xs={8}>
+                <Grid item md={8}>
                     <Box sx={{ paddingTop: '23px' }} > {messagesElement} </Box>
                     <Box component='form'
                         noValidate

@@ -35,7 +35,7 @@ const ProfileInfo = ({ profile, updateStatus, isOwner, savePhoto, saveProfile, s
             <Card sx={{ minWidth: 275, backgroundColor: '#ffffff' }}>
                 <CardContent>
                     <Grid container>
-                        <Grid item xs={2.5}>
+                        <Grid item xs={12} md={3}>
                             {profile.photos.large != null
                                 ? <Avatar src={profile.photos.large} sx={{ width: 200, height: 200 }} />
                                 : <Avatar sx={{ bgcolor: '#004D40', color: '#004D40'[600], width: 200, height: 200 }}>
@@ -48,7 +48,7 @@ const ProfileInfo = ({ profile, updateStatus, isOwner, savePhoto, saveProfile, s
                                 </Button>
                             }
                         </Grid>
-                        <Grid item xs={9.5}>
+                        <Grid item md={9}>
                             <Typography variant='h5' component='div'>
                                 {profile.fullName}
                             </Typography>

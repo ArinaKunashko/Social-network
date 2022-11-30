@@ -117,7 +117,7 @@ const Header = (props) => {
                             textDecoration: 'none',
                         }}
                     >
-                        Social-Network
+                        S-Network
                     </Typography>
                     {props.isAuth &&
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

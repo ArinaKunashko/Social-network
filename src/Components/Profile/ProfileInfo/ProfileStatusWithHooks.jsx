@@ -30,6 +30,7 @@ const ProfileStatusWithHooks = (props) => {
                 <ListItemButton color='secondary' onClick={activateEditMode} sx={{ mt: '12px', pl: '14px' }} >
                     {props.status || 'My status'}
                 </ListItemButton>
+                
             }
             {editMode &&
                 <TextField margin='dense'
